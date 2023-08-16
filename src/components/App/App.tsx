@@ -1,14 +1,23 @@
 import React from 'react';
+import { Layout } from 'antd';
 
 import logo from '../../logo.svg';
 import './App.css';
+import Filter from '../Filter';
+import Tabs from '../Tabs';
+import Ticked from '../Ticket';
+
+const { Header, Footer, Content } = Layout;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
+      <img src={logo} className="App-logo" alt="logo" />
+      <Filter />
+      <Tabs />
+      <Ticked />
+      content
+      footer
     </div>
   );
 }

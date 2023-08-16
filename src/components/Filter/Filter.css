@@ -1,0 +1,30 @@
+.Filter {
+  width: 232px;
+  height: 252px;
+  border-radius: 5px;
+  background: #FFF;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.10);
+  margin: 0;
+  padding: 20px;
+}
+
+.Filter__title {
+  color: #4A4A4A;
+  font-family: 'Open Sans';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.Filter__items {
+  color: #4A4A4A;
+  font-family: Open Sans;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
