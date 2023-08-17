@@ -1,0 +1,31 @@
+.TicketCell {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: min-content;
+  justify-content: space-between;
+}
+
+.ticketCell__name {
+  color: #4A4A4A;
+  font-family: 'Open Sans';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.ticketCell__value {
+  color: #4A4A4A;
+  font-family: 'Open Sans';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0;
+}

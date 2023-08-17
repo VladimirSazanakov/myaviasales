@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout } from 'antd';
 
-import logo from '../../logo.svg';
+import logo from '../../img/Logo.svg';
 import './App.css';
 import Filter from '../Filter';
 import Tabs from '../Tabs';
