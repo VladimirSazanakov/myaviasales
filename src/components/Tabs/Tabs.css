@@ -1,13 +1,22 @@
-.Tabs {
+.tabs {
   width: 504px;
   height: 50px;
   text-align: center;
-  font-family: Open Sans;
+  vertical-align: middle;
+  font-family: 'Open Sans';
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
   line-height: 20px;
-  /* 166.667% */
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.ant-radio-button-wrapper {
+  display: inline-flex;
+  vertical-align: middle;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }

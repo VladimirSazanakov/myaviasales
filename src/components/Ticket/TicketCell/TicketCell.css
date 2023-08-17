@@ -7,12 +7,12 @@
 }
 
 .ticketCell__name {
-  color: #4A4A4A;
+  color: #A0B0B9;
   font-family: 'Open Sans';
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
-  line-height: 12px;
+  line-height: 18px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   margin: 0;
@@ -21,10 +21,10 @@
 .ticketCell__value {
   color: #4A4A4A;
   font-family: 'Open Sans';
-  font-size: 12px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 600;
-  line-height: 12px;
+  line-height: 21px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   margin: 0;
