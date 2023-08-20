@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import './TicketCell.css';
+import classes from './TicketCell.module.scss';
 
 interface TCprops {
-  name: string,
-  value: string
+  name: string;
+  value: string;
 }
 
 export default function TicketCell(props: TCprops) {
@@ -12,9 +12,9 @@ export default function TicketCell(props: TCprops) {
   const value = props.value;
 
   return (
-    <div className="TicketCell">
-      <span className="ticketCell__name">{name}</span>
-      <span className="ticketCell__value">{value}</span>
+    <div className={classes.TicketCell}>
+      <span className={classes['ticketCell__name']}>{name}</span>
+      <span className={classes['ticketCell__value']}>{value}</span>
     </div>
-  )
+  );
 }

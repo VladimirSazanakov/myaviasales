@@ -1,14 +1,18 @@
-import React from "react";
+import React from 'react';
 
-import './CompanyLogo.css';
+import classes from './CompanyLogo.module.scss';
 
-export default function CompanyLogo(props: any) {
+interface logoProps {
+  srcImage: string,
+  alt: string,
+}
+
+export default function CompanyLogo(props: logoProps) {
   const src = props.srcImage;
-  const alt = props.alt
+  const alt = props.alt;
   return (
-    <div className="CompanyLogo">
-      <img className="logoImg" src={src} alt={alt} />
+    <div className={classes.CompanyLogo}>
+      <img className={classes.logoImg} src={src} alt={alt} />
     </div>
-
-  )
+  );
 }

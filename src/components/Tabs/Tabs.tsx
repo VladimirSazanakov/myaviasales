@@ -1,19 +1,21 @@
-import React, { useState } from "react";
-import { Radio, Button, RadioChangeEvent } from "antd";
+import React, { useState } from 'react';
+import { Radio, RadioChangeEvent } from 'antd';
 
-import './Tabs.css'
+import classes from './Tabs.module.scss';
+import './Tabs.scss';
 
 export default function Tabs(props: any) {
-  const [value4, setValue4] = useState('Apple');
+  const [value, setValue] = useState('');
 
-  const optionsWithDisabled = [
-    { label: 'Самый дешевый', value: 'Apple' },
-    { label: 'Самый Быстрый', value: 'Pear' },
-    { label: 'Оптимальный', value: 'Orange' },
-  ];
+  // const optionsWithDisabled = [
+  //   { label: 'Самый дешевый', value: 'Apple' },
+  //   { label: 'Самый Быстрый', value: 'Pear' },
+  //   { label: 'Оптимальный', value: 'Orange' },
+  // ];
+
   const onChange4 = ({ target: { value } }: RadioChangeEvent) => {
     console.log('radio4 checked', value);
-    setValue4(value);
+    setValue(value);
   };
 
   const tabButtonStyle = {
@@ -26,17 +28,25 @@ export default function Tabs(props: any) {
     lineHeight: '20px',
     letterSpacing: '0.5px',
     verticalAlign: 'baseline',
-
-  }
+  };
 
   return (
-
-    <Radio.Group className="tabs" defaultValue="a" buttonStyle="solid">
-      <Radio.Button value="a" style={tabButtonStyle}>Hangzhou</Radio.Button>
-      <Radio.Button value="b" style={tabButtonStyle}>Shanghai</Radio.Button>
-      <Radio.Button value="c" style={tabButtonStyle}>Beijing</Radio.Button>
+    <Radio.Group
+      className={classes.tabs}
+      defaultValue="cheapest"
+      buttonStyle="solid"
+      onChange={onChange4}
+    >
+      <Radio.Button value="cheapest" style={tabButtonStyle}>
+        Самый дешевый
+      </Radio.Button>
+      <Radio.Button value="fastest" style={tabButtonStyle}>
+        Самый быстрый
+      </Radio.Button>
+      <Radio.Button value="optimal" style={tabButtonStyle}>
+        Оптимальный
+      </Radio.Button>
     </Radio.Group>
-
 
     // <Radio.Group
     //   className="Tabs"
@@ -48,6 +58,5 @@ export default function Tabs(props: any) {
     //   optionType="button"
     //   buttonStyle="solid"
     // />
-
-  )
+  );
 }

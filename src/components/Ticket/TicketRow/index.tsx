@@ -1,3 +1,3 @@
 import TicketRow from './TicketRow';
 
-export default TicketRow; 
+export default TicketRow;

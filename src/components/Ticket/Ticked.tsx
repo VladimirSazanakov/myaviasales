@@ -1,21 +1,19 @@
-import React from "react";
+import React from 'react';
 
-import './Ticked.css';
-import Price from "../Price";
-import CompanyLogo from "../CompanyLogo";
-
+import Price from '../Price';
+import CompanyLogo from '../CompanyLogo';
 import imageLogo from '../../img/S7 Logo.svg';
-import TicketCell from "./TicketCell/TicketCell";
-import TicketRow from "./TicketRow";
+
+import classes from './Ticked.module.scss';
+import TicketRow from './TicketRow';
 
 export default function Ticked(props: any) {
   return (
-    <div className="Ticked">
-      <div className="Ticked__content">
-        <div className="Ticked__header-container">
+    <div className={classes.Ticked}>
+      <div className={classes['Ticked__content']}>
+        <div className={classes['Ticked__header-container']}>
           <Price value={12500} />
           <CompanyLogo srcImage={imageLogo} alt="S7 Airlines" />
-
         </div>
         <TicketRow />
         <TicketRow />
@@ -58,5 +56,5 @@ export default function Ticked(props: any) {
         </div> */}
       </div>
     </div>
-  )
+  );
 }
