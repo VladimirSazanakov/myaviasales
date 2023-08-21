@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createStoreHook } from 'react-redux';
 import { Layout } from 'antd';
 
@@ -8,6 +8,9 @@ import Tabs from '../Tabs';
 import Ticked from '../Ticket';
 
 import classes from './App.module.scss';
+import ApiAviasales from '../../service/ApiAviasales';
+
+import { store } from '../store/store';
 
 <style>
   @import
@@ -16,6 +19,30 @@ import classes from './App.module.scss';
 
 
 function App() {
+  const aviasalesApi = new ApiAviasales;
+
+  // useEffect(() => {
+  //   const searchId = aviasalesApi.getSearchId();
+  //   searchId.then(data => {
+  //     console.log(data);
+  //     const tickets = aviasalesApi.getTicket(data.searchId);
+  //     tickets.then(data => {
+  //       console.log(data);
+  //     })
+  //   }
+  //   );
+  // }, []);
+
+  store.subscribe(() => {
+    console.log(store.getState());
+  })
+  // console.log(store.getState());
+  store.dispatch({ type: 'FILTER_TOGLE_ALL' });
+  store.dispatch({ type: 'FILTER_TOGLE_NO_TRANSFER' });
+  // store.dispatch({ type: 'FILTER_TOGLE_NO_TRANSFER' });
+
+  // console.log(store.getState());
+
   return (
     <div className={classes.App}>
       <header className={classes['app-header']}>
