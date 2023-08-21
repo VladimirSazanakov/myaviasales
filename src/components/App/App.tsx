@@ -1,4 +1,5 @@
 import React from 'react';
+import { createStoreHook } from 'react-redux';
 import { Layout } from 'antd';
 
 import logo from '../../img/Logo.svg';
@@ -12,6 +13,7 @@ import classes from './App.module.scss';
   @import
   url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 </style>;
+
 
 function App() {
   return (

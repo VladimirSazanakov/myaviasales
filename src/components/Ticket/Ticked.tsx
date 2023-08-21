@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Price from '../Price';
 import CompanyLogo from '../CompanyLogo';
@@ -6,8 +6,33 @@ import imageLogo from '../../img/S7 Logo.svg';
 
 import classes from './Ticked.module.scss';
 import TicketRow from './TicketRow';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { fetchUsers } from '../store/actionCreator/user';
+
+
+// const UserList: React.FC = () => {
+//   const { users, error, loading } = useSelector(state => state);
+//   const dispatch = useDispatch;
+//   useEffect(() => {
+//     fetchUsers();
+//   }, [])
+//   return
+// }
 
 export default function Ticked(props: any) {
+  const state = useSelector(state => state);
+  const dispatch = useDispatch();
+
+  console.log(state);
+
+  useEffect(() => {
+    fetchUsers();
+  }, [])
+
+
+
+
   return (
     <div className={classes.Ticked}>
       <div className={classes['Ticked__content']}>
