@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 
 function Filter(props: any) {
-  //const{filterState, togle1transfer, togle2transfer, togle3transfer, togleAll, togleNotransfer }
+  //const{filterState, togle1transfer, togle2transfer, togle3transfer, togleAll, togleNotransfer } = props;
   const { dispatch } = store;
   const { togle1transfer, togle2transfer, togle3transfer, togleAll, togleNotransfer } = bindActionCreators(filterActions, dispatch);
   console.log(togleAll);
@@ -32,8 +32,9 @@ function Filter(props: any) {
 
 const mapStateToProps = (state: any) => {
   return {
-    state.filter,
+    state.filter.
   }
 }
+
 
 export default connect
