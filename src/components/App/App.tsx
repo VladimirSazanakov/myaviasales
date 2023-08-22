@@ -37,8 +37,10 @@ function App() {
     console.log(store.getState());
   })
   // console.log(store.getState());
-  store.dispatch({ type: 'FILTER_TOGLE_ALL' });
-  store.dispatch({ type: 'FILTER_TOGLE_NO_TRANSFER' });
+
+
+  //store.dispatch({ type: 'FILTER_TOGLE_ALL' });
+  //store.dispatch({ type: 'FILTER_TOGLE_NO_TRANSFER' });
   // store.dispatch({ type: 'FILTER_TOGLE_NO_TRANSFER' });
 
   // console.log(store.getState());

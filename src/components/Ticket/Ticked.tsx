@@ -8,7 +8,7 @@ import classes from './Ticked.module.scss';
 import TicketRow from './TicketRow';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { fetchUsers } from '../store/actionCreator/user';
+//import { fetchUsers } from '../store/actionCreator/user';
 
 
 // const UserList: React.FC = () => {
@@ -26,9 +26,9 @@ export default function Ticked(props: any) {
 
   console.log(state);
 
-  useEffect(() => {
-    fetchUsers();
-  }, [])
+  // useEffect(() => {
+  //   fetchUsers();
+  // }, []) 
 
 
 

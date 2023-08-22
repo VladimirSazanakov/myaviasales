@@ -1,16 +1,11 @@
+import { filterValue } from '../../types/types';
 const initialState = {
   filter: {
     all: false,
     peresadki: [false, false, false, false],
   }
 }
-enum filterValue {
-  filter_togle_all = 'FILTER_TOGLE_ALL',
-  filter_togle_no_transfer = 'FILTER_TOGLE_NO_TRANSFER',
-  filter_togle_1_transef = 'FILTER_TOGLE_1_TRANSFER',
-  filter_togle_2_transef = 'FILTER_TOGLE_2_TRANSFER',
-  filter_togle_3_transer = 'FILTER_TOGLE_3_TRANSFER',
-}
+
 
 export const reducer = (state: any, action: any) => {
   if (state === undefined) {
