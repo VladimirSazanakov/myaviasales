@@ -1,4 +1,4 @@
-import { ticketValueActions } from '../../../types/types';
+import { RawTicketValueActions } from '../../../types/types';
 
 const initialState = {
   searchId: '',
@@ -12,11 +12,11 @@ export const ticketReducer = (state: any, action: any) => {
   }
 
   switch (action.type) {
-    case ticketValueActions.fetchId: {
+    case RawTicketValueActions.fetchId: {
       const searchId = action.payload.searchId;
       return { ...state, searchId };
     }
-    case ticketValueActions.fetchTickets: {
+    case RawTicketValueActions.fetchTickets: {
       const tickets = action.payload;
       return { ...state, tickets };
     }

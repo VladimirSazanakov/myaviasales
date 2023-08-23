@@ -1,5 +1,5 @@
 import { filterValue } from "../../types/types"
-import { ticketValueActions } from "../../types/types"
+import { RawTicketValueActions } from "../../types/types"
 
 // actions for filter
 export const togleAll = () => {
@@ -19,9 +19,9 @@ export const togle3transfer = () => {
 }
 
 export const addSearchId = (payload: any) => {
-  return { type: ticketValueActions.fetchId, payload }
+  return { type: RawTicketValueActions.fetchId, payload }
 }
 
 export const addTickets = (payload: any) => {
-  return { type: ticketValueActions.fetchTickets, payload }
+  return { type: RawTicketValueActions.fetchTickets, payload }
 }

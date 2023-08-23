@@ -16,19 +16,25 @@ export interface Action {
   payload?: any;
 }
 
-//------------TicketTypes-------------------
+//------------RawTicketTypes-------------------
 
 export interface TicketState {
-  searchId: string;
-  tickets: {
-    stop: boolean,
-    tickets: Ticket[]
+  isLoading: boolean;
+  error: boolean;
+  rawTickets: {
+    searchId: string;
+    tickets: {
+      stop: boolean,
+      tickets: Ticket[]
+    }
   }
 }
 
-export enum ticketValueActions {
+export enum RawTicketValueActions {
   fetchId = 'FETCH_SEARCH_ID',
-  fetchTickets = 'FETCH_TICKETS'
+  fetchTickets = 'FETCH_TICKETS',
+  setloading = 'SET_LOADING',
+  setError = 'SET_ERROR'
 }
 
 export interface Ticket {

@@ -23,13 +23,13 @@ import { fetchSessionId } from '../asyncActions/asyncActions';
 
 
 function App() {
-  const dispatch = useDispatch()
-  const ticketState = useSelector(state => state.ticket);
-  console.log(ticketState);
+  // const dispatch = useDispatch()
+  // const ticketState = useSelector(state => state.ticket);
+  // console.log(ticketState);
 
-  useEffect(() => {
-    fetchSessionId(dispatch);
-  }, [])
+  // useEffect(() => {
+  //   fetchSessionId(dispatch);
+  // }, [])
 
   // const aviasalesApi = new ApiAviasales;
 

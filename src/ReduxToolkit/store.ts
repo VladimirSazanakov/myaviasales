@@ -4,9 +4,9 @@ import rawTicketsReducer from './reducers/rawTickets';
 import tabsReducer from './reducers/tabsReducer';
 
 const rootReducer = combineReducers({
-  filter: filterReducer,
-  rawTickets: rawTicketsReducer,
-  tabs: tabsReducer
+  filterReducer,
+  //rawTickets: rawTicketsReducer,
+  // tabs: tabsReducer
 
 })
 
