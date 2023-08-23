@@ -10,7 +10,7 @@ import Ticked from '../Ticket';
 import classes from './App.module.scss';
 import ApiAviasales from '../../service/ApiAviasales';
 
-import { store } from '../store/store';
+import { store } from '../ReduxClassic/store';
 
 <style>
   @import
