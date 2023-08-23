@@ -8,9 +8,13 @@ import Tabs from '../Tabs';
 import Ticked from '../Ticket';
 
 import classes from './App.module.scss';
-import ApiAviasales from '../../service/ApiAviasales';
 
-import { store } from '../ReduxClassic/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSessionId } from '../asyncActions/asyncActions';
+
+// import ApiAviasales from '../../service/ApiAviasales';
+
+// import { store } from '../ReduxClassic/store';
 
 <style>
   @import
@@ -19,9 +23,17 @@ import { store } from '../ReduxClassic/store';
 
 
 function App() {
-  const aviasalesApi = new ApiAviasales;
+  const dispatch = useDispatch()
+  const ticketState = useSelector(state => state.ticket);
+  console.log(ticketState);
 
-  // useEffect(() => {
+  useEffect(() => {
+    fetchSessionId(dispatch);
+  }, [])
+
+  // const aviasalesApi = new ApiAviasales;
+
+  //  useEffect(() => {
   //   const searchId = aviasalesApi.getSearchId();
   //   searchId.then(data => {
   //     console.log(data);
@@ -33,9 +45,9 @@ function App() {
   //   );
   // }, []);
 
-  store.subscribe(() => {
-    console.log(store.getState());
-  })
+  // store.subscribe(() => {
+  //   console.log(store.getState());
+  // })
   // console.log(store.getState());
 
 

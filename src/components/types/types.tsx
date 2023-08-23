@@ -6,6 +6,11 @@ export enum filterValue {
   filter_togle_3_transer = 'FILTER_TOGLE_3_TRANSFER',
 }
 
+export enum ticketValueActions {
+  fetchId = 'FETCH_SEARCH_ID',
+  fetchTickets = 'FETCH_TICKETS'
+}
+
 export interface userState {
   state: any[];
   loading: boolean;
