@@ -1,4 +1,6 @@
-import { ticketValueActions } from '../../../types/types';
+import { Ticket, TicketState, Action, ticketValueActions } from "../../types/types";
+
+
 
 const initialState = {
   searchId: '',
@@ -6,7 +8,7 @@ const initialState = {
 }
 
 
-export const ticketReducer = (state: any, action: any) => {
+export const rawTicketsReducer = (state: TicketState, action: Action) => {
   if (state === undefined) {
     return initialState;
   }
@@ -25,4 +27,4 @@ export const ticketReducer = (state: any, action: any) => {
   }
 }
 
-export default ticketReducer;
+export default rawTicketsReducer;

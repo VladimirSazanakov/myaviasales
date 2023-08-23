@@ -1,4 +1,4 @@
-import { filterValue } from '../../types/types';
+import { filterValue } from '../../../types/types';
 
 //------------------------------------------------------------
 // const initialState = {

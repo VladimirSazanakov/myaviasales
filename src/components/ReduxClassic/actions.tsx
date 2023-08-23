@@ -1,5 +1,5 @@
-import { filterValue } from "../types/types"
-import { ticketValueActions } from "../types/types"
+import { filterValue } from "../../types/types"
+import { ticketValueActions } from "../../types/types"
 
 // actions for filter
 export const togleAll = () => {

@@ -10,7 +10,7 @@ import * as filterActions from '../ReduxClassic/actions';
 import { connect } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { fileURLToPath } from 'url';
-import { filterValue } from '../types/types';
+import { filterValue } from '../../types/types';
 
 
 function Filter(props: any) {
