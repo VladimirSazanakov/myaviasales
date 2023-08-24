@@ -12,6 +12,21 @@ export const TicketFilter = (ticketsArr: Ticket[], peresadki: number) => {
   return filteredArr;
 }
 
+export function sortPrice(a: Ticket, b: Ticket): number{
+  if (a.price > b.price) return 1;
+  if (a.price == b.price) return 0;
+  if (a.price < b.price) return -1;
+  return 0;
+};
+
+export function sortDuration(a: Ticket, b: Ticket): number{
+  console.log(a.segments[0].duration);
+  if (a.segments[0].duration > b.segments[0].duration) return 1;
+  if (a.segments[0].duration = b.segments[0].duration) return 0;
+  if (a.segments[0].duration < b.segments[0].duration) return -1;
+  return 0;
+}
+
 // const ticketsActions = ticketsSlice.actions;
 // const bigState = useAppSelector(state => state);
 // //const dispatch = useAppDispatch(); 

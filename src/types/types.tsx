@@ -106,6 +106,7 @@ export interface TicketsState {
 
 export enum TicketsValueAction {
   setTikets= 'SET_TIKETS',
+  sortPrice = 'SORT_BY_PRICE',
 }
 
 //------------------------------------

@@ -13,10 +13,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchSessionId } from '../asyncActions/asyncActions';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { rawTicketSlice } from '../../ReduxToolkit/reducers/rawTickets';
-import { TicketFilter } from '../../service/ticketFunctions';
+import { TicketFilter, sortPrice } from '../../service/ticketFunctions';
 import { ticketsSlice } from '../../ReduxToolkit/reducers/tickets';
 import { AppDispatch } from '../../ReduxToolkit/store';
-import { Ticket } from '../../types/types';
+import { TabsValue, Ticket } from '../../types/types';
 import TicketsList from '../TicketsList/insex';
 
 // import ApiAviasales from '../../service/ApiAviasales';
@@ -35,9 +35,11 @@ function App() {
   const state = bigState.rawTickets;
   const filterState = bigState.filterReducer;
   const dispatch = useAppDispatch();
-  const rawTickeds = bigState.rawTickets.rawTickets.tickets.tickets; 
+  const rawTickeds = bigState.rawTickets.rawTickets.tickets.tickets;
+  const tabState = bigState.tabs; 
 
   const rawTicketActions = rawTicketSlice.actions;
+  const ticketsActions = ticketsSlice.actions; 
 
   console.log('RawTicketState', state);
 
@@ -60,6 +62,19 @@ function App() {
     console.log("tickedPageArr", ticketPageArr);
     
   },[rawTickeds]);
+
+  useEffect(()=>{
+    dispatch(ticketsActions.SORT_BY_PRICE(tabState.tabCurrentValue)); 
+    if(tabState.tabCurrentValue===TabsValue.cheapest){
+      
+    // const NewArr = [...bigState.tickets.Tickets];
+    // NewArr.sort(sortPrice);
+    // dispatch(ticketsActions.SET_TIKETS(NewArr));
+// dispatch(ticketsActions.SORT_BY_PRICE({sortPrice})); notwork;
+    // console.log('sorted Arr', NewArr);
+    }
+    
+  },[tabState]);
 
 
   let ticketPageArr: Ticket[] = [];
