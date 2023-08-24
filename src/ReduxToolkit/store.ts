@@ -5,8 +5,8 @@ import tabsReducer from './reducers/tabsReducer';
 
 const rootReducer = combineReducers({
   filterReducer,
-  //rawTickets: rawTicketsReducer,
-  // tabs: tabsReducer
+  rawTickets: rawTicketsReducer,
+  tabs: tabsReducer
 
 })
 

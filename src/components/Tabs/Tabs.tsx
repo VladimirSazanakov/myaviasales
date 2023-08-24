@@ -3,9 +3,18 @@ import { Radio, RadioChangeEvent } from 'antd';
 
 import classes from './Tabs.module.scss';
 import './Tabs.scss';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { tabsSlice } from '../../ReduxToolkit/reducers/tabsReducer';
+import { TabsValue } from '../../types/types';
 
 export default function Tabs(props: any) {
-  const [value, setValue] = useState('');
+  // const [value, setValue] = useState('');
+  const value = useAppSelector(state => state.tabs.tabCurrentValue)
+  console.log('tabs state value', value);
+
+  const dispatch = useAppDispatch();
+  const { setTabs } = tabsSlice.actions;
+  // console.log(tabsSlice.actions);
 
   // const optionsWithDisabled = [
   //   { label: 'Самый дешевый', value: 'Apple' },
@@ -15,7 +24,7 @@ export default function Tabs(props: any) {
 
   const onChange4 = ({ target: { value } }: RadioChangeEvent) => {
     console.log('radio4 checked', value);
-    setValue(value);
+    dispatch(setTabs(value));
   };
 
   const tabButtonStyle = {
@@ -33,17 +42,17 @@ export default function Tabs(props: any) {
   return (
     <Radio.Group
       className={classes.tabs}
-      defaultValue="cheapest"
+      defaultValue={value}
       buttonStyle="solid"
       onChange={onChange4}
     >
-      <Radio.Button value="cheapest" style={tabButtonStyle}>
+      <Radio.Button value={TabsValue.cheapest} style={tabButtonStyle}>
         Самый дешевый
       </Radio.Button>
-      <Radio.Button value="fastest" style={tabButtonStyle}>
+      <Radio.Button value={TabsValue.fastest} style={tabButtonStyle}>
         Самый быстрый
       </Radio.Button>
-      <Radio.Button value="optimal" style={tabButtonStyle}>
+      <Radio.Button value={TabsValue.optimal} style={tabButtonStyle}>
         Оптимальный
       </Radio.Button>
     </Radio.Group>

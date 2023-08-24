@@ -11,6 +11,8 @@ import classes from './App.module.scss';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSessionId } from '../asyncActions/asyncActions';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { rawTicketSlice } from '../../ReduxToolkit/reducers/rawTickets';
 
 // import ApiAviasales from '../../service/ApiAviasales';
 
@@ -23,6 +25,19 @@ import { fetchSessionId } from '../asyncActions/asyncActions';
 
 
 function App() {
+  const state = useAppSelector(state => state.rawTickets)
+  const dispatch = useAppDispatch();
+
+  const rawTicketActions = rawTicketSlice.actions;
+
+  console.log('RawTicketState', state);
+
+  useEffect(() => {
+    dispatch(fetchSessionId());
+  }, [])
+
+
+  //-------------------------------------------------------
   // const dispatch = useDispatch()
   // const ticketState = useSelector(state => state.ticket);
   // console.log(ticketState);

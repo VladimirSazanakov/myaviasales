@@ -21,6 +21,7 @@ export interface Action {
 export interface TicketState {
   isLoading: boolean;
   error: boolean;
+  searchId: string;
   rawTickets: {
     searchId: string;
     tickets: {

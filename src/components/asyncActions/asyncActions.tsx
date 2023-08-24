@@ -1,20 +1,41 @@
+import { rawTicketSlice } from "../../ReduxToolkit/reducers/rawTickets";
+import { AppDispatch } from "../../ReduxToolkit/store";
 import ApiAviasales from "../../service/ApiAviasales"
 import { addSearchId, addTickets } from "../ReduxClassic/actions";
 
-export const fetchSessionId = (dispatch) => {
+export const fetchSessionId = () => async (dispatch: any) => {
   const api = new ApiAviasales;
-  const searchId = api.getSearchId();
+  const rawTicketAction = rawTicketSlice.actions;
+  try {
+    dispatch(rawTicketAction.SET_LOADING(true));
 
-  searchId.then(data => {
-    dispatch(addSearchId(data));
-    //console.log(data);
-    const tickets = api.getTicket(data.searchId);
-    tickets.then(data => {
-      dispatch(addTickets(data));
-      //  console.log(data);
-    })
+    const { searchId } = await api.getSearchId();
+    console.log(searchId);
+    dispatch(rawTicketAction.FETCH_SEARCH_ID(searchId));
+
+    const rawTickets = await api.getTicket(searchId)
+
+    console.log(rawTickets);
+
+    dispatch(rawTicketAction.SET_LOADING(false));
+
+
+    // searchId.then((data: any) => {
+    // dispatch(addSearchId(data));
+    // //console.log(data);
+    // const tickets = api.getTicket(data.searchId);
+    // tickets.then(data => {
+    //   dispatch(addTickets(data));
+    //   //  console.log(data);
+
+    // })
+
+    // })
+  } catch (err) {
+    dispatch(rawTicketAction.SET_LOADING(false));
+    dispatch(rawTicketAction.SET_ERROR(true));
+
   }
-  );
 
   // return () => {
   //   fetch()

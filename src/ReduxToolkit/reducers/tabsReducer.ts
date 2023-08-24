@@ -1,16 +1,29 @@
+import { createSlice } from "@reduxjs/toolkit";
 import { Action, TabsState, TabsValue } from "../../types/types";
 
-const initialState = {
-  tabsSelect: TabsValue.cheapest,
+const initialState: TabsState = {
+  tabCurrentValue: TabsValue.cheapest,
 }
 
-const tabsReducer = (state: TabsState, action: Action) => {
-  switch (action.type) {
-    case TabsValue.cheapest: return { tabSelect: TabsValue.cheapest };
-    case TabsValue.fastest: return { tabSelect: TabsValue.fastest };
-    case TabsValue.optimal: return { tabSelect: TabsValue.optimal };
-    default: return state;
-  };
-};
+export const tabsSlice = createSlice({
+  name: 'tabs',
+  initialState,
+  reducers: {
+    setTabs(state: TabsState, action: Action) {
+      state.tabCurrentValue = action.payload
+    }
+  }
+})
 
-export default tabsReducer;
+// const tabsReducer = (state: TabsState, action: Action) => {
+//   switch (action.type) {
+//     case TabsValue.cheapest: return { tabSelect: TabsValue.cheapest };
+//     case TabsValue.fastest: return { tabSelect: TabsValue.fastest };
+//     case TabsValue.optimal: return { tabSelect: TabsValue.optimal };
+//     default: return state;
+//   };
+// };
+
+// export default tabsReducer;
+
+export default tabsSlice.reducer;
