@@ -13,6 +13,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchSessionId } from '../asyncActions/asyncActions';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { rawTicketSlice } from '../../ReduxToolkit/reducers/rawTickets';
+import { TicketFilter } from '../../service/ticketFunctions';
+import { ticketsSlice } from '../../ReduxToolkit/reducers/tickets';
+import { AppDispatch } from '../../ReduxToolkit/store';
+import { Ticket } from '../../types/types';
 
 // import ApiAviasales from '../../service/ApiAviasales';
 
@@ -24,8 +28,11 @@ import { rawTicketSlice } from '../../ReduxToolkit/reducers/rawTickets';
 </style>;
 
 
+
 function App() {
-  const state = useAppSelector(state => state.rawTickets)
+  const bigState = useAppSelector(state =>state);
+  const state = bigState.rawTickets;
+  const filterState = bigState.filterReducer;
   const dispatch = useAppDispatch();
 
   const rawTicketActions = rawTicketSlice.actions;
@@ -34,7 +41,31 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchSessionId());
-  }, [])
+  }, []);
+
+
+  useEffect(()=>{
+    if(!state.isLoading&&!state.error){
+    console.log(!state.isLoading&&!state.error);
+      filterArr();
+     }
+   },[filterState])
+
+
+   const filterArr = () =>{
+    //const bigState = useAppSelector(state => state);
+    const rawTickets = bigState.rawTickets.rawTickets.tickets.tickets;
+    const ticketsActions = ticketsSlice.actions; 
+    let NewArr: Ticket[] = [];
+  
+      bigState.filterReducer.peresadki.forEach((on, peresadki) =>{
+      if(on){
+        NewArr = NewArr.concat(TicketFilter(rawTickets, peresadki))
+      }
+    })
+    console.log('NewFiltered Array', NewArr);
+    dispatch(ticketsActions.SET_TIKETS(NewArr));
+  }
 
 
   //-------------------------------------------------------

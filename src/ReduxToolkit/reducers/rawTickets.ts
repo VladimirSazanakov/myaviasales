@@ -1,12 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Ticket, TicketState, Action, RawTicketValueActions } from "../../types/types";
+import { Ticket, rawTicketsState, Action, RawTicketValueActions } from "../../types/types";
 
 
 
-const initialState: TicketState = {
+const initialState: rawTicketsState = {
   isLoading: false,
   error: false,
-  searchId: '',
   rawTickets: {
     searchId: '',
     tickets: {
@@ -20,17 +19,17 @@ export const rawTicketSlice = createSlice({
   name: 'rawTicket',
   initialState,
   reducers: {
-    [RawTicketValueActions.setError](state: TicketState, action: Action) {
+    [RawTicketValueActions.setError](state: rawTicketsState, action: Action) {
       state.error = action.payload;
     },
-    [RawTicketValueActions.setloading](state: TicketState, action: Action) {
+    [RawTicketValueActions.setloading](state: rawTicketsState, action: Action) {
       state.isLoading = action.payload;
     },
-    [RawTicketValueActions.fetchTickets](state: TicketState, action: Action) {
-      state.rawTickets = action.payload;
+    [RawTicketValueActions.fetchTickets](state: rawTicketsState, action: Action) {
+      state.rawTickets.tickets = action.payload;
     },
-    [RawTicketValueActions.fetchId](state: TicketState, action: Action) {
-      state.searchId = action.payload;
+    [RawTicketValueActions.fetchId](state: rawTicketsState, action: Action) {
+      state.rawTickets.searchId = action.payload;
     }
   }
 })

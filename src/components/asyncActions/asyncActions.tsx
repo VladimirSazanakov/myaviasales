@@ -1,7 +1,5 @@
 import { rawTicketSlice } from "../../ReduxToolkit/reducers/rawTickets";
-import { AppDispatch } from "../../ReduxToolkit/store";
 import ApiAviasales from "../../service/ApiAviasales"
-import { addSearchId, addTickets } from "../ReduxClassic/actions";
 
 export const fetchSessionId = () => async (dispatch: any) => {
   const api = new ApiAviasales;
@@ -11,11 +9,14 @@ export const fetchSessionId = () => async (dispatch: any) => {
 
     const { searchId } = await api.getSearchId();
     console.log(searchId);
+
     dispatch(rawTicketAction.FETCH_SEARCH_ID(searchId));
 
     const rawTickets = await api.getTicket(searchId)
 
     console.log(rawTickets);
+
+    dispatch(rawTicketAction.FETCH_TICKETS(rawTickets));
 
     dispatch(rawTicketAction.SET_LOADING(false));
 

@@ -18,10 +18,9 @@ export interface Action {
 
 //------------RawTicketTypes-------------------
 
-export interface TicketState {
+export interface rawTicketsState {
   isLoading: boolean;
   error: boolean;
-  searchId: string;
   rawTickets: {
     searchId: string;
     tickets: {
@@ -85,6 +84,18 @@ export interface TabsState {
   tabCurrentValue: TabsValue;
 }
 //--------------------------------------------
+
+///--------------Ticket reducer---------------------
+
+export interface TicketsState {
+  Tickets: Ticket[];
+}
+
+export enum TicketsValueAction {
+  setTikets= 'SET_TIKETS',
+}
+
+//------------------------------------
 
 export interface userState {
   state: any[];

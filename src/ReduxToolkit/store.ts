@@ -2,11 +2,13 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import filterReducer from './reducers/filterReducer';
 import rawTicketsReducer from './reducers/rawTickets';
 import tabsReducer from './reducers/tabsReducer';
+import ticketsReducer from './reducers/tickets';
 
 const rootReducer = combineReducers({
   filterReducer,
   rawTickets: rawTicketsReducer,
-  tabs: tabsReducer
+  tabs: tabsReducer,
+  tickets: ticketsReducer,
 
 })
 
