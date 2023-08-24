@@ -17,6 +17,7 @@ import { TicketFilter } from '../../service/ticketFunctions';
 import { ticketsSlice } from '../../ReduxToolkit/reducers/tickets';
 import { AppDispatch } from '../../ReduxToolkit/store';
 import { Ticket } from '../../types/types';
+import TicketsList from '../TicketsList/insex';
 
 // import ApiAviasales from '../../service/ApiAviasales';
 
@@ -30,10 +31,11 @@ import { Ticket } from '../../types/types';
 
 
 function App() {
-  const bigState = useAppSelector(state =>state);
+  const bigState = useAppSelector(state => state);
   const state = bigState.rawTickets;
   const filterState = bigState.filterReducer;
   const dispatch = useAppDispatch();
+  const rawTickeds = bigState.rawTickets.rawTickets.tickets.tickets; 
 
   const rawTicketActions = rawTicketSlice.actions;
 
@@ -44,27 +46,39 @@ function App() {
   }, []);
 
 
-  useEffect(()=>{
-    if(!state.isLoading&&!state.error){
-    console.log(!state.isLoading&&!state.error);
+  useEffect(() => {
+    if (!state.isLoading && !state.error) {
+      console.log(!state.isLoading && !state.error);
       filterArr();
-     }
-   },[filterState])
+
+      
+    }
+  }, [filterState])
+  
+  useEffect(()=>{
+    ticketPageArr = bigState.rawTickets.rawTickets.tickets.tickets.slice(0, 5);
+    console.log("tickedPageArr", ticketPageArr);
+    
+  },[rawTickeds]);
 
 
-   const filterArr = () =>{
+  let ticketPageArr: Ticket[] = [];
+
+  const filterArr = () => {
     //const bigState = useAppSelector(state => state);
     const rawTickets = bigState.rawTickets.rawTickets.tickets.tickets;
-    const ticketsActions = ticketsSlice.actions; 
+    const ticketsActions = ticketsSlice.actions;
     let NewArr: Ticket[] = [];
-  
-      bigState.filterReducer.peresadki.forEach((on, peresadki) =>{
-      if(on){
+
+    bigState.filterReducer.peresadki.forEach((on, peresadki) => {
+      if (on) {
         NewArr = NewArr.concat(TicketFilter(rawTickets, peresadki))
       }
     })
     console.log('NewFiltered Array', NewArr);
     dispatch(ticketsActions.SET_TIKETS(NewArr));
+
+
   }
 
 
@@ -103,6 +117,63 @@ function App() {
 
   // console.log(store.getState());
 
+// ticketPageArr =  [{
+//     "price": 105720,
+//     "carrier": "S7",
+//     "segments": [
+//         {
+//             "origin": "MOW",
+//             "destination": "HKT",
+//             "date": "2024-04-12T16:01:31.349Z",
+//             "duration": 614,
+//             "stops": []
+//         },
+//         {
+//             "origin": "HKT",
+//             "destination": "MOW",
+//             "date": "2024-07-19T20:00:09.901Z",
+//             "duration": 834,
+//             "stops": []
+//         }
+//     ]
+// }, {   "price": 105720,
+// "carrier": "S7",
+// "segments": [
+//     {
+//         "origin": "MOW",
+//         "destination": "HKT",
+//         "date": "2024-04-12T16:01:31.349Z",
+//         "duration": 614,
+//         "stops": []
+//     },
+//     {
+//         "origin": "HKT",
+//         "destination": "MOW",
+//         "date": "2024-07-19T20:00:09.901Z",
+//         "duration": 834,
+//         "stops": []
+//     }
+// ]
+// },{   "price": 105720,
+// "carrier": "S7",
+// "segments": [
+//     {
+//         "origin": "MOW",
+//         "destination": "HKT",
+//         "date": "2024-04-12T16:01:31.349Z",
+//         "duration": 614,
+//         "stops": []
+//     },
+//     {
+//         "origin": "HKT",
+//         "destination": "MOW",
+//         "date": "2024-07-19T20:00:09.901Z",
+//         "duration": 834,
+//         "stops": []
+//     }
+// ]
+// }]
+
   return (
     <div className={classes.App}>
       <header className={classes['app-header']}>
@@ -114,11 +185,7 @@ function App() {
         </section>
         <section className={classes['app-result-section']}>
           <Tabs />
-          <Ticked />
-          <Ticked />
-          <Ticked />
-          <Ticked />
-          <Ticked />
+          <TicketsList listArr={bigState.tickets.Tickets.slice(0, 5)} />
         </section>
       </main>
     </div>

@@ -8,7 +8,7 @@ interface priceProps {
 
 export default function Price(props: priceProps) {
   //const value: number = props.price;
-  const value = 12500;
+  const value = props.value;
   const valueFormat = new Intl.NumberFormat('ru-RU', {
     style: 'currency',
     currency: 'RUB',

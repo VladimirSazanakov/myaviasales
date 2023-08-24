@@ -8,6 +8,7 @@ import classes from './Ticked.module.scss';
 import TicketRow from './TicketRow';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { Ticket, TicketSegment } from '../../types/types';
 //import { fetchUsers } from '../store/actionCreator/user';
 
 
@@ -21,15 +22,19 @@ import { useDispatch } from 'react-redux';
 // }
 
 export default function Ticked(props: any) {
-  const state = useSelector(state => state);
-  const dispatch = useDispatch();
+  const {price, segments} = props.ticket;
+  
+  // const state = useSelector(state => state);
+  // const dispatch = useDispatch();
 
-  console.log(state);
+  // console.log(state);
 
   // useEffect(() => {
   //   fetchUsers();
   // }, []) 
-
+const TicketInfo = segments.map((segment: TicketSegment, index: number)=>{
+  return <TicketRow key = {index} data={segment}></TicketRow>
+})
 
 
 
@@ -37,11 +42,10 @@ export default function Ticked(props: any) {
     <div className={classes.Ticked}>
       <div className={classes['Ticked__content']}>
         <div className={classes['Ticked__header-container']}>
-          <Price value={12500} />
+          <Price value={price} />
           <CompanyLogo srcImage={imageLogo} alt="S7 Airlines" />
         </div>
-        <TicketRow />
-        <TicketRow />
+        {TicketInfo}
 
         {/* <div className="Ticked__content-container">
           <div className="Ticked__Route">
