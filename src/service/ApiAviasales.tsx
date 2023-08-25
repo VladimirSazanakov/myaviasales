@@ -1,5 +1,4 @@
 export default class ApiAviasales {
-  //_apiBase = "http://front-test.dev.aviadales.ru/";
   _apiBase = "https://aviasales-test-api.kata.academy/"
 
   optionsGet = {
@@ -11,8 +10,6 @@ export default class ApiAviasales {
 
   async getResourse(url: string) {
     try {
-      const urlstring = `${this._apiBase}${url}`;
-      console.log(urlstring);
       const response = await fetch(`${this._apiBase}${url}`, this.optionsGet);
       return (await response).json();
     }
@@ -28,9 +25,6 @@ export default class ApiAviasales {
 
   async getTicket(searchID: string) {
     const url = `tickets?searchId=${searchID}`;
-    console.log('Response to Server to get Tickets ', searchID);
     return this.getResourse(url);
   }
-
-
 }

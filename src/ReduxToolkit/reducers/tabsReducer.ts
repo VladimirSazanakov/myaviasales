@@ -15,15 +15,4 @@ export const tabsSlice = createSlice({
   }
 })
 
-// const tabsReducer = (state: TabsState, action: Action) => {
-//   switch (action.type) {
-//     case TabsValue.cheapest: return { tabSelect: TabsValue.cheapest };
-//     case TabsValue.fastest: return { tabSelect: TabsValue.fastest };
-//     case TabsValue.optimal: return { tabSelect: TabsValue.optimal };
-//     default: return state;
-//   };
-// };
-
-// export default tabsReducer;
-
 export default tabsSlice.reducer;

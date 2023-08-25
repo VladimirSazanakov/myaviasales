@@ -1,8 +1,4 @@
-import { AppConfig } from "antd/es/app/context";
-import { ticketsSlice } from "../ReduxToolkit/reducers/tickets";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { Ticket } from "../types/types"
-import { AppDispatch } from "../ReduxToolkit/store";
 
 export const TicketFilter = (ticketsArr: Ticket[], peresadki: number) => {
   function match(ticket: Ticket, peresadki: number): boolean {
@@ -13,51 +9,21 @@ export const TicketFilter = (ticketsArr: Ticket[], peresadki: number) => {
 }
 
 export function sortPrice(a: Ticket, b: Ticket): number {
-  if (a.price > b.price) return 1;
-  if (a.price == b.price) return 0;
-  if (a.price < b.price) return -1;
-  return 0;
+  return a.price - b.price;
 };
 
 export function sortDuration(a: Ticket, b: Ticket): number {
-  console.log(a.segments[0].duration);
   return (a.segments[0].duration - b.segments[0].duration)
-  //  return 1;
-  // if (a.segments[0].duration = b.segments[0].duration) return 0;
-  // if (a.segments[0].duration < b.segments[0].duration) return -1;
-  // return 0;
 }
 
 export function sortOptimal(a: Ticket, b: Ticket): number {
-  //console.log(a.segments[0].duration);
   const paramA = a.price / 10000 + a.segments[0].duration / 1000;
   const paramB = b.price / 10000 + b.segments[0].duration / 1000;
   return (paramA - paramB);
-  //  return 1;
-  // if (a.segments[0].duration = b.segments[0].duration) return 0;
-  // if (a.segments[0].duration < b.segments[0].duration) return -1;
-  // return 0;
 }
 
 export function sliceArr(CurrentPage: number, TicketPerPage: number, Arr: Ticket[]) {
   const startPosition = (CurrentPage - 1) * TicketPerPage;
   const endPosition = startPosition + TicketPerPage;
   return Arr.slice(startPosition, endPosition);
-
 }
-
-// const ticketsActions = ticketsSlice.actions;
-// const bigState = useAppSelector(state => state);
-// //const dispatch = useAppDispatch(); 
-
-// export const filterArr = (dispatch: AppDispatch) =>{
-//   const rawTickets = bigState.rawTickets.rawTickets.tickets.tickets; 
-//   let NewArr: Ticket[] = [];
-
-//   bigState.filterReducer.peresadki.forEach((on, peresadki) =>{
-//     if(on){
-//       NewArr = NewArr.concat(TicketFilter(rawTickets, peresadki))
-//     }
-//   })
-//   dispatch(ticketsActions.SET_TIKETS(NewArr));
-// }
