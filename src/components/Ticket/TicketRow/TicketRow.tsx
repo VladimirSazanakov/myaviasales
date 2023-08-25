@@ -1,10 +1,10 @@
 import React from 'react';
-
-import TicketCell from '../TicketCell';
 import { format } from 'date-fns';
 
-import classes from './TicketRow.module.scss';
+import TicketCell from '../TicketCell';
 import { TicketSegment } from '../../../types/types';
+
+import classes from './TicketRow.module.scss';
 
 export default function TicketRow(props: any) {
   const data: TicketSegment = props.data;
@@ -18,11 +18,16 @@ export default function TicketRow(props: any) {
 
   function stopsToString(stops: number) {
     switch (stops) {
-      case 0: return 'без пересадок';
-      case 1: return '1 пересадка';
-      case 2: return '2 пересадки';
-      case 3: return '3 пересадки';
-      default: return `${stops} пересадок`
+      case 0:
+        return 'без пересадок';
+      case 1:
+        return '1 пересадка';
+      case 2:
+        return '2 пересадки';
+      case 3:
+        return '3 пересадки';
+      default:
+        return `${stops} пересадок`;
     }
   }
   function dateToString(date: string) {
@@ -32,9 +37,15 @@ export default function TicketRow(props: any) {
 
   return (
     <div className={classes.TicketRow}>
-      <TicketCell name={`${origin}-${destination}`} value={dateToString(date)} />
+      <TicketCell
+        name={`${origin}-${destination}`}
+        value={dateToString(date)}
+      />
       <TicketCell name={'в пути'} value={durationToString(duration)} />
-      <TicketCell name={stopsToString(stops.length)} value={stops.length !== 0 ? stops.join(' ') : '__'} />
+      <TicketCell
+        name={stopsToString(stops.length)}
+        value={stops.length !== 0 ? stops.join(' ') : '__'}
+      />
     </div>
   );
 }

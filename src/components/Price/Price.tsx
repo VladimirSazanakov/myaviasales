@@ -3,7 +3,7 @@ import React from 'react';
 import classes from './Price.module.scss';
 
 interface priceProps {
-  value: number,
+  value: number;
 }
 
 export default function Price(props: priceProps) {

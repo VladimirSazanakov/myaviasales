@@ -1,22 +1,21 @@
 export default class ApiAviasales {
-  _apiBase = "https://aviasales-test-api.kata.academy/"
+  _apiBase = 'https://aviasales-test-api.kata.academy/';
 
   optionsGet = {
-    method: "GET",
+    method: 'GET',
     headers: {
       accept: 'aplication/json',
-    }
+    },
   };
 
   async getResourse(url: string) {
     try {
       const response = await fetch(`${this._apiBase}${url}`, this.optionsGet);
       return (await response).json();
+    } catch (err) {
+      throw new Error('Could Not connection');
     }
-    catch (err) {
-      throw new Error("Could Not connection");
-    };
-  };
+  }
 
   async getSearchId() {
     const url = 'search';

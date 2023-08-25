@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Radio, RadioChangeEvent } from 'antd';
+
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { tabsSlice } from '../../ReduxToolkit/reducers/tabsReducer';
 import { TabsValue } from '../../types/types';
@@ -8,12 +9,11 @@ import classes from './Tabs.module.scss';
 import './Tabs.scss';
 
 export default function Tabs() {
-  const value = useAppSelector(state => state.tabs.tabCurrentValue)
+  const value = useAppSelector((state) => state.tabs.tabCurrentValue);
   const dispatch = useAppDispatch();
   const { setTabs } = tabsSlice.actions;
 
   const onChange4 = ({ target: { value } }: RadioChangeEvent) => {
-    console.log('radio4 checked', value);
     dispatch(setTabs(value));
   };
 
@@ -47,4 +47,4 @@ export default function Tabs() {
       </Radio.Button>
     </Radio.Group>
   );
-};
+}

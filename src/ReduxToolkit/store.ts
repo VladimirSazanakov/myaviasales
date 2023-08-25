@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+
 import filterReducer from './reducers/filterReducer';
 import rawTicketsReducer from './reducers/rawTickets';
 import tabsReducer from './reducers/tabsReducer';
@@ -9,14 +10,13 @@ const rootReducer = combineReducers({
   rawTickets: rawTicketsReducer,
   tabs: tabsReducer,
   tickets: ticketsReducer,
-
-})
+});
 
 export const setupStore = () => {
   return configureStore({
-    reducer: rootReducer
-  })
-}
+    reducer: rootReducer,
+  });
+};
 
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof setupStore>;

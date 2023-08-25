@@ -7,12 +7,12 @@ export enum filterValue {
 }
 
 export interface FilterState {
-  all: boolean,
-  peresadki: boolean[],
+  all: boolean;
+  peresadki: boolean[];
 }
 
 export interface Action {
-  type: string,
+  type: string;
   payload?: any;
 }
 
@@ -23,62 +23,61 @@ export interface rawTicketsState {
   error: boolean;
   searchId: string;
   rawTickets: Ticket[];
-
 }
 
 export enum RawTicketValueActions {
   fetchId = 'FETCH_SEARCH_ID',
   fetchTickets = 'FETCH_TICKETS',
   setloading = 'SET_LOADING',
-  setError = 'SET_ERROR'
+  setError = 'SET_ERROR',
 }
 
 export interface Ticket {
   // Цена в рублях
-  price: number
+  price: number;
   // Код авиакомпании (iata)
-  carrier: string
+  carrier: string;
   // Массив перелётов.
   // В тестовом задании это всегда поиск "туда-обратно" значит состоит из двух элементов
   segments: [
     {
       // Код города (iata)
-      origin: string
+      origin: string;
       // Код города (iata)
-      destination: string
+      destination: string;
       // Дата и время вылета туда
-      date: string
+      date: string;
       // Массив кодов (iata) городов с пересадками
-      stops: string[]
+      stops: string[];
       // Общее время перелёта в минутах
-      duration: number
+      duration: number;
     },
     {
       // Код города (iata)
-      origin: string
+      origin: string;
       // Код города (iata)
-      destination: string
+      destination: string;
       // Дата и время вылета обратно
-      date: string
+      date: string;
       // Массив кодов (iata) городов с пересадками
-      stops: string[]
+      stops: string[];
       // Общее время перелёта в минутах
-      duration: number
-    }
-  ]
+      duration: number;
+    },
+  ];
 }
 
 export interface TicketSegment {
   // Код города (iata)
-  origin: string
+  origin: string;
   // Код города (iata)
-  destination: string
+  destination: string;
   // Дата и время вылета туда
-  date: string
+  date: string;
   // Массив кодов (iata) городов с пересадками
-  stops: string[]
+  stops: string[];
   // Общее время перелёта в минутах
-  duration: number
+  duration: number;
 }
 
 //-----------------Tabs Types-----------------
@@ -86,7 +85,7 @@ export interface TicketSegment {
 export enum TabsValue {
   cheapest = 'CHEAPEST',
   fastest = 'FASTEST',
-  optimal = 'OPTIMAL'
+  optimal = 'OPTIMAL',
 }
 
 export interface TabsState {

@@ -1,11 +1,10 @@
-import { rawTicketSlice } from "../../ReduxToolkit/reducers/rawTickets";
-import ApiAviasales from "../../service/ApiAviasales"
+import { rawTicketSlice } from '../../ReduxToolkit/reducers/rawTickets';
+import ApiAviasales from '../../service/ApiAviasales';
 
-const api = new ApiAviasales;
+const api = new ApiAviasales();
 const rawTicketAction = rawTicketSlice.actions;
 
 export const fetchSessionId = () => async (dispatch: any) => {
-
   try {
     dispatch(rawTicketAction.SET_LOADING(true));
     const { searchId } = await api.getSearchId();
@@ -15,7 +14,7 @@ export const fetchSessionId = () => async (dispatch: any) => {
     dispatch(rawTicketAction.SET_LOADING(false));
     dispatch(rawTicketAction.SET_ERROR(true));
   }
-}
+};
 
 export const fetchTickets = (searchId: string) => async (dispatch: any) => {
   const maxTryingCount = 30;
@@ -35,5 +34,5 @@ export const fetchTickets = (searchId: string) => async (dispatch: any) => {
     }
     tryingCount++;
   }
-  dispatch(rawTicketAction.SET_LOADING(false))
-}
+  dispatch(rawTicketAction.SET_LOADING(false));
+};

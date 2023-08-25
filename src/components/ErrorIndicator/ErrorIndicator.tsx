@@ -1,4 +1,4 @@
-import { Alert } from "antd";
+import { Alert } from 'antd';
 
 export default function ErrorIndicator() {
   return (
@@ -7,5 +7,5 @@ export default function ErrorIndicator() {
       description="Now I FIX this PROBLEM!!!"
       type="info"
     />
-  )
+  );
 }

@@ -8,6 +8,4 @@ import FV from '../../img/companyLogo/FV.svg';
 import BT from '../../img/companyLogo/BT.svg';
 import UT from '../../img/companyLogo/UT.jpg';
 
-
-
 export { S7, W6, U6, AK, DP, TD, FV, BT, UT };

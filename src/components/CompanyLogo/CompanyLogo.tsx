@@ -4,7 +4,7 @@ import classes from './CompanyLogo.module.scss';
 import * as logos from './ImportsLogo';
 
 interface logoProps {
-  companyCode: string,
+  companyCode: string;
 }
 
 export default function CompanyLogo(props: logoProps) {
