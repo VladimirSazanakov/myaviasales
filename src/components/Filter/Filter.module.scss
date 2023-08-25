@@ -6,6 +6,13 @@
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
   margin: 0;
   padding: 20px;
+
+  @media (max-width: 960px) {
+    width: 502px;
+    height: 292px;
+    padding-left: 60px;
+    box-sizing: border-box;
+  }
 }
 
 .Filter__title {

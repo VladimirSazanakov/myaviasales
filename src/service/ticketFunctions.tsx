@@ -39,6 +39,13 @@ export function sortOptimal(a: Ticket, b: Ticket): number {
   // return 0;
 }
 
+export function sliceArr(CurrentPage: number, TicketPerPage: number, Arr: Ticket[]) {
+  const startPosition = (CurrentPage - 1) * TicketPerPage;
+  const endPosition = startPosition + TicketPerPage;
+  return Arr.slice(startPosition, endPosition);
+
+}
+
 // const ticketsActions = ticketsSlice.actions;
 // const bigState = useAppSelector(state => state);
 // //const dispatch = useAppDispatch(); 

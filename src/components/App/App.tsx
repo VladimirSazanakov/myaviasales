@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { createStoreHook } from 'react-redux';
-import { Alert } from 'antd';
+import { Alert, Pagination } from 'antd';
 
 import logo from '../../img/Logo.svg';
 import Filter from '../Filter';
@@ -40,7 +40,9 @@ function App() {
   const dispatch = useAppDispatch();
   const rawTickets = bigState.rawTickets.rawTickets;
   const tabState = bigState.tabs;
+
   const TicketsArr = bigState.tickets.Tickets;
+  const TicketsPageArr = bigState.tickets.PageTikets;
 
   const isLoading = bigState.rawTickets.isLoading;
   const error = bigState.rawTickets.error;
@@ -50,6 +52,9 @@ function App() {
   const rawTicketActions = rawTicketSlice.actions;
 
   const ticketsActions = ticketsSlice.actions;
+
+  const currentPage = bigState.tickets.CurentPage;
+  const totalPages = bigState.tickets.TotalPages;
 
   console.log('RawTicketState', state);
 
@@ -105,6 +110,13 @@ function App() {
   };
 
 
+  const onChangePagination = (page: number) => {
+    console.log('change Pagination', page);
+    dispatch(ticketsActions.SET_CURRENT_PAGE(page));
+    console.log('current page', currentPage);
+  }
+
+
 
 
 
@@ -146,9 +158,14 @@ function App() {
           {(isLoading) ? <LoadIndicator /> : null}
           {(error) ? <ErrorIndicator /> : null}
 
-          {(TicketsArr.length > 0) ? <TicketsList listArr={TicketsArr} /> : <Alert message="Рейсов подходящих под заданные фильтры не найдено" type='info' />}
+          {(TicketsPageArr.length > 0) ? <TicketsList listArr={TicketsPageArr} /> : <Alert message="Рейсов подходящих под заданные фильтры не найдено" type='info' />}
         </section>
       </main>
+      <footer className={classes['app-footer']}>
+        <Pagination current={currentPage} onChange={onChangePagination} total={totalPages}
+          showSizeChanger={false} hideOnSinglePage={true} />
+
+      </footer>
     </div>
   );
 }
