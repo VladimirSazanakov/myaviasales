@@ -18,6 +18,7 @@ import { ticketsSlice } from '../../ReduxToolkit/reducers/tickets';
 import { AppDispatch } from '../../ReduxToolkit/store';
 import { TabsValue, Ticket } from '../../types/types';
 import TicketsList from '../TicketsList/insex';
+import ErrorIndicator from '../ErrorIndicator';
 
 // import ApiAviasales from '../../service/ApiAviasales';
 
@@ -36,10 +37,10 @@ function App() {
   const filterState = bigState.filterReducer;
   const dispatch = useAppDispatch();
   const rawTickeds = bigState.rawTickets.rawTickets.tickets.tickets;
-  const tabState = bigState.tabs; 
+  const tabState = bigState.tabs;
 
   const rawTicketActions = rawTicketSlice.actions;
-  const ticketsActions = ticketsSlice.actions; 
+  const ticketsActions = ticketsSlice.actions;
 
   console.log('RawTicketState', state);
 
@@ -53,28 +54,27 @@ function App() {
       console.log(!state.isLoading && !state.error);
       filterArr();
 
-      
+
     }
   }, [filterState])
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     ticketPageArr = bigState.rawTickets.rawTickets.tickets.tickets.slice(0, 5);
     console.log("tickedPageArr", ticketPageArr);
-    
-  },[rawTickeds]);
 
-  useEffect(()=>{
-    dispatch(ticketsActions.SORT_BY_PRICE(tabState.tabCurrentValue)); 
-    if(tabState.tabCurrentValue===TabsValue.cheapest){
-      
+  }, [rawTickeds]);
+
+  useEffect(() => {
+    // if(tabState.tabCurrentValue===TabsValue.cheapest){
+    sortArr();
     // const NewArr = [...bigState.tickets.Tickets];
     // NewArr.sort(sortPrice);
     // dispatch(ticketsActions.SET_TIKETS(NewArr));
-// dispatch(ticketsActions.SORT_BY_PRICE({sortPrice})); notwork;
+    // dispatch(ticketsActions.SORT_BY_PRICE({sortPrice})); notwork;
     // console.log('sorted Arr', NewArr);
-    }
-    
-  },[tabState]);
+
+
+  }, [tabState]);
 
 
   let ticketPageArr: Ticket[] = [];
@@ -92,8 +92,13 @@ function App() {
     })
     console.log('NewFiltered Array', NewArr);
     dispatch(ticketsActions.SET_TIKETS(NewArr));
+    sortArr();
 
 
+  }
+
+  const sortArr = () => {
+    dispatch(ticketsActions.SORT_BY_PRICE(tabState.tabCurrentValue));
   }
 
 
@@ -132,62 +137,64 @@ function App() {
 
   // console.log(store.getState());
 
-// ticketPageArr =  [{
-//     "price": 105720,
-//     "carrier": "S7",
-//     "segments": [
-//         {
-//             "origin": "MOW",
-//             "destination": "HKT",
-//             "date": "2024-04-12T16:01:31.349Z",
-//             "duration": 614,
-//             "stops": []
-//         },
-//         {
-//             "origin": "HKT",
-//             "destination": "MOW",
-//             "date": "2024-07-19T20:00:09.901Z",
-//             "duration": 834,
-//             "stops": []
-//         }
-//     ]
-// }, {   "price": 105720,
-// "carrier": "S7",
-// "segments": [
-//     {
-//         "origin": "MOW",
-//         "destination": "HKT",
-//         "date": "2024-04-12T16:01:31.349Z",
-//         "duration": 614,
-//         "stops": []
-//     },
-//     {
-//         "origin": "HKT",
-//         "destination": "MOW",
-//         "date": "2024-07-19T20:00:09.901Z",
-//         "duration": 834,
-//         "stops": []
-//     }
-// ]
-// },{   "price": 105720,
-// "carrier": "S7",
-// "segments": [
-//     {
-//         "origin": "MOW",
-//         "destination": "HKT",
-//         "date": "2024-04-12T16:01:31.349Z",
-//         "duration": 614,
-//         "stops": []
-//     },
-//     {
-//         "origin": "HKT",
-//         "destination": "MOW",
-//         "date": "2024-07-19T20:00:09.901Z",
-//         "duration": 834,
-//         "stops": []
-//     }
-// ]
-// }]
+  // ticketPageArr =  [{
+  //     "price": 105720,
+  //     "carrier": "S7",
+  //     "segments": [
+  //         {
+  //             "origin": "MOW",
+  //             "destination": "HKT",
+  //             "date": "2024-04-12T16:01:31.349Z",
+  //             "duration": 614,
+  //             "stops": []
+  //         },
+  //         {
+  //             "origin": "HKT",
+  //             "destination": "MOW",
+  //             "date": "2024-07-19T20:00:09.901Z",
+  //             "duration": 834,
+  //             "stops": []
+  //         }
+  //     ]
+  // }, {   "price": 105720,
+  // "carrier": "S7",
+  // "segments": [
+  //     {
+  //         "origin": "MOW",
+  //         "destination": "HKT",
+  //         "date": "2024-04-12T16:01:31.349Z",
+  //         "duration": 614,
+  //         "stops": []
+  //     },
+  //     {
+  //         "origin": "HKT",
+  //         "destination": "MOW",
+  //         "date": "2024-07-19T20:00:09.901Z",
+  //         "duration": 834,
+  //         "stops": []
+  //     }
+  // ]
+  // },{   "price": 105720,
+  // "carrier": "S7",
+  // "segments": [
+  //     {
+  //         "origin": "MOW",
+  //         "destination": "HKT",
+  //         "date": "2024-04-12T16:01:31.349Z",
+  //         "duration": 614,
+  //         "stops": []
+  //     },
+  //     {
+  //         "origin": "HKT",
+  //         "destination": "MOW",
+  //         "date": "2024-07-19T20:00:09.901Z",
+  //         "duration": 834,
+  //         "stops": []
+  //     }
+  // ]
+  // }]
+
+  const content = (bigState.rawTickets.error) ? <ErrorIndicator /> :  ;
 
   return (
     <div className={classes.App}>
@@ -200,6 +207,11 @@ function App() {
         </section>
         <section className={classes['app-result-section']}>
           <Tabs />
+
+          {(bigState.ti.length === 0 && searchValue !== '' && loading === false) ? <Alert message="no movies on request" description="Please type more information" type="info" /> : null}
+          {error ? <ErrorIndicator /> :
+            loading ? <Spin tip="Loading" size='large'><div className='content' /></Spin> : <MovieList movies={movies} windowSize={props.windowSize} onChangeRate={props.onChangeRate} />}
+
           <TicketsList listArr={bigState.tickets.Tickets.slice(0, 5)} />
         </section>
       </main>
