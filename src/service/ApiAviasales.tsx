@@ -28,6 +28,7 @@ export default class ApiAviasales {
 
   async getTicket(searchID: string) {
     const url = `tickets?searchId=${searchID}`;
+    console.log('Response to Server to get Tickets ', searchID);
     return this.getResourse(url);
   }
 

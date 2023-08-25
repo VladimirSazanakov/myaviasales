@@ -6,13 +6,8 @@ import { Ticket, rawTicketsState, Action, RawTicketValueActions } from "../../ty
 const initialState: rawTicketsState = {
   isLoading: false,
   error: false,
-  rawTickets: {
-    searchId: '',
-    tickets: {
-      stop: false,
-      tickets: []
-    }
-  }
+  searchId: '',
+  rawTickets: [],
 }
 
 export const rawTicketSlice = createSlice({
@@ -23,13 +18,19 @@ export const rawTicketSlice = createSlice({
       state.error = action.payload;
     },
     [RawTicketValueActions.setloading](state: rawTicketsState, action: Action) {
+      console.log('set isLoading is', action.payload);
       state.isLoading = action.payload;
     },
     [RawTicketValueActions.fetchTickets](state: rawTicketsState, action: Action) {
-      state.rawTickets.tickets = action.payload;
+      state.rawTickets.push(...action.payload);
     },
     [RawTicketValueActions.fetchId](state: rawTicketsState, action: Action) {
-      state.rawTickets.searchId = action.payload;
+      if (!state.searchId) {
+        console.log('set Seatch ID', action.payload);
+        state.searchId = action.payload
+      } else {
+        console.log('searchId is create, Not Change', action.payload);
+      };
     }
   }
 })

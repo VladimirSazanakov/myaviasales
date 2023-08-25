@@ -21,13 +21,9 @@ export interface Action {
 export interface rawTicketsState {
   isLoading: boolean;
   error: boolean;
-  rawTickets: {
-    searchId: string;
-    tickets: {
-      stop: boolean,
-      tickets: Ticket[]
-    }
-  }
+  searchId: string;
+  rawTickets: Ticket[];
+
 }
 
 export enum RawTicketValueActions {
@@ -73,16 +69,16 @@ export interface Ticket {
 }
 
 export interface TicketSegment {
-      // Код города (iata)
-      origin: string
-      // Код города (iata)
-      destination: string
-      // Дата и время вылета туда
-      date: string
-      // Массив кодов (iata) городов с пересадками
-      stops: string[]
-      // Общее время перелёта в минутах
-      duration: number
+  // Код города (iata)
+  origin: string
+  // Код города (iata)
+  destination: string
+  // Дата и время вылета туда
+  date: string
+  // Массив кодов (iata) городов с пересадками
+  stops: string[]
+  // Общее время перелёта в минутах
+  duration: number
 }
 
 //-----------------Tabs Types-----------------
@@ -105,7 +101,7 @@ export interface TicketsState {
 }
 
 export enum TicketsValueAction {
-  setTikets= 'SET_TIKETS',
+  setTikets = 'SET_TIKETS',
   sortPrice = 'SORT_BY_PRICE',
 }
 
