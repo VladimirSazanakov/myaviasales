@@ -1,6 +1,6 @@
 .CompanyLogo {
   width: auto;
-  height: 36px;
+  height: 30px;
   text-align: right;
 
   color: black;
@@ -13,5 +13,7 @@
 
 .logoImg {
   vertical-align: middle;
-  object-fit: cover;
+  height: 30px;
+  width: 200px;
+  object-fit: contain;
 }

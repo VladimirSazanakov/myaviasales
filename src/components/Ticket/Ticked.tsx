@@ -22,8 +22,9 @@ import { Ticket, TicketSegment } from '../../types/types';
 // }
 
 export default function Ticked(props: any) {
-  const {price, segments} = props.ticket;
-  
+  const { price, segments } = props.ticket;
+  const companyName = props.ticket.carrier;
+
   // const state = useSelector(state => state);
   // const dispatch = useDispatch();
 
@@ -32,9 +33,10 @@ export default function Ticked(props: any) {
   // useEffect(() => {
   //   fetchUsers();
   // }, []) 
-const TicketInfo = segments.map((segment: TicketSegment, index: number)=>{
-  return <TicketRow key = {index} data={segment}></TicketRow>
-})
+  const TicketInfo = segments.map((segment: TicketSegment, index: number) => {
+    return <TicketRow key={index} data={segment}></TicketRow>
+  })
+  // const CompanyLogoPath = `../../img/companyLogo/${ }.svg`;
 
 
 
@@ -43,7 +45,7 @@ const TicketInfo = segments.map((segment: TicketSegment, index: number)=>{
       <div className={classes['Ticked__content']}>
         <div className={classes['Ticked__header-container']}>
           <Price value={price} />
-          <CompanyLogo srcImage={imageLogo} alt="S7 Airlines" />
+          <CompanyLogo companyCode={companyName} />
         </div>
         {TicketInfo}
 
