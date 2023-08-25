@@ -1,5 +1,6 @@
 import React from 'react';
-import { Radio, RadioChangeEvent } from 'antd';
+import { Radio } from 'antd';
+import type { RadioChangeEvent } from 'antd';
 
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { tabsSlice } from '../../ReduxToolkit/reducers/tabsReducer';

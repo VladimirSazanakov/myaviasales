@@ -18,16 +18,11 @@ export default function TicketRow(props: any) {
 
   function stopsToString(stops: number) {
     switch (stops) {
-      case 0:
-        return 'без пересадок';
-      case 1:
-        return '1 пересадка';
-      case 2:
-        return '2 пересадки';
-      case 3:
-        return '3 пересадки';
-      default:
-        return `${stops} пересадок`;
+      case 0: { return 'без пересадок'; }
+      case 1: { return '1 пересадка'; }
+      case 2: { return '2 пересадки'; }
+      case 3: { return '3 пересадки'; }
+      default: { return `${stops} пересадок`; }
     }
   }
   function dateToString(date: string) {
