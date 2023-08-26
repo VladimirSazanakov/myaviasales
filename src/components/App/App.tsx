@@ -35,7 +35,6 @@ function App() {
     if (rawTickets.length > 0) {
       filterArr();
     }
-    console.log(bigState.tickets.Tickets);
   }, [filterState]);
 
   useEffect(() => {
@@ -53,12 +52,10 @@ function App() {
   };
 
   const onChangePagination = (page: number) => {
-    // console.log(ticketsActions.SET_CURRENT_PAGE(page));
     let tempPage: any;
     tempPage = page;
 
     dispatch(ticketsActions.SET_CURRENT_PAGE(tempPage));
-    // dispatch({ type: 'tickets/SET_CURRENT_PAGE', action: { payload: page } });
     tempPage = null;
   };
 
@@ -75,8 +72,6 @@ function App() {
     let tempNewArr: any;
     tempNewArr = NewArr;
     dispatch(ticketsActions.SET_TIKETS(tempNewArr));
-    // dispatch({ type: 'tickets/SET_TIKETS', action: { payload: NewArr } });
-    // dispatch({type: 'tick'})
     tempNewArr = [];
     sortArr();
   };
@@ -85,7 +80,6 @@ function App() {
     let TtabCurrenValue: any;
     TtabCurrenValue = tabState.tabCurrentValue;
     dispatch(ticketsActions.SORT_BY_PRICE(TtabCurrenValue));
-    // dispatch({ type: 'tickets/SORT_BY_PRICE', action: { payload: tabState.tabCurrentValue } });
     TtabCurrenValue = 0;
   };
 
