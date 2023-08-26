@@ -1,18 +1,31 @@
 import { rawTicketSlice } from '../../ReduxToolkit/reducers/rawTickets';
+import { AppDispatch } from '../../ReduxToolkit/store';
 import ApiAviasales from '../../service/ApiAviasales';
 
 const api = new ApiAviasales();
 const rawTicketAction = rawTicketSlice.actions;
 
-export const fetchSessionId = () => async (dispatch: any) => {
+export const fetchSessionId = () => async (dispatch: AppDispatch) => {
+  let temp: any;
   try {
-    dispatch(rawTicketAction.SET_LOADING(true));
+    temp = true;
+
+    dispatch(rawTicketAction.SET_LOADING(temp));
     const { searchId } = await api.getSearchId();
+
     dispatch(rawTicketAction.FETCH_SEARCH_ID(searchId));
-    dispatch(rawTicketAction.SET_LOADING(false));
+
+    temp = false;
+    dispatch(rawTicketAction.SET_LOADING(temp));
+    // dispatch({ type: 'rawTickets/SET_LOADING', action: { payload: false } });
   } catch (err) {
-    dispatch(rawTicketAction.SET_LOADING(false));
-    dispatch(rawTicketAction.SET_ERROR(true));
+    temp = false;
+    dispatch(rawTicketAction.SET_LOADING(temp));
+    // dispatch({ type: 'rawTickets/SET_LOADING', action: { payload: false } });
+
+    temp = true;
+    dispatch(rawTicketAction.SET_ERROR(temp));
+    // dispatch({ type: 'rawTickets/SET_ERROR', action: { payload: true } });
   }
 };
 
@@ -20,19 +33,29 @@ export const fetchTickets = (searchId: string) => async (dispatch: any) => {
   const maxTryingCount = 30;
   let stop = false;
   let tryingCount = 1;
+  let temp: any;
 
   while (!stop && tryingCount <= maxTryingCount) {
-    dispatch(rawTicketAction.SET_LOADING(true));
+    temp = true;
+    dispatch(rawTicketAction.SET_LOADING(temp));
+    // dispatch({ type: 'rawTickets/SET_LOADING', action: { payload: true } });
 
     try {
       const result = await api.getTicket(searchId);
       dispatch(rawTicketAction.FETCH_TICKETS(result.tickets));
       stop = result.stop;
-      dispatch(rawTicketAction.SET_ERROR(false));
+
+      temp = false;
+      dispatch(rawTicketAction.SET_ERROR(temp));
+      // dispatch({ type: 'rawTickets/SET_ERROR', action: { payload: false } });
     } catch (err) {
-      dispatch(rawTicketAction.SET_ERROR(true));
+      temp = true;
+      dispatch(rawTicketAction.SET_ERROR(temp));
+      // dispatch({ type: 'rawTickets/SET_ERROR', action: { payload: true } });
     }
     tryingCount++;
   }
-  dispatch(rawTicketAction.SET_LOADING(false));
+  temp = false;
+  dispatch(rawTicketAction.SET_LOADING(temp));
+  // dispatch({ type: 'rawTickets/SET_LOADING', action: { payload: false } });
 };

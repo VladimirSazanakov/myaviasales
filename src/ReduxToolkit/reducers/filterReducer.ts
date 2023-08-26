@@ -41,4 +41,6 @@ export const filterSlice = createSlice({
   },
 });
 
+export const { FILTER_TOGLE_ALL } = filterSlice.actions;
+
 export default filterSlice.reducer;

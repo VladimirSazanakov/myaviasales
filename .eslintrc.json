@@ -37,7 +37,7 @@
   ],
   "rules": {
     "indent": [
-      "error",
+      0,
       2
     ],
     "prettier/prettier": "error",

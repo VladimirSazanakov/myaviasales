@@ -8,4 +8,16 @@ import FV from '../../img/companyLogo/FV.svg';
 import BT from '../../img/companyLogo/BT.svg';
 import UT from '../../img/companyLogo/UT.jpg';
 
-export { S7, W6, U6, AK, DP, TD, FV, BT, UT };
+export const LogoArr = [S7, W6, U6, AK, DP, TD, FV, BT, UT];
+
+export const LogoObj: any = {
+  S7: S7,
+  W6: W6,
+  U6: U6,
+  AK: AK,
+  DP: DP,
+  TD: TD,
+  FV: FV,
+  BT: BT,
+  UT: UT,
+};

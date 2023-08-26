@@ -14,10 +14,11 @@ const initialState: rawTicketsState = {
 };
 
 export const rawTicketSlice = createSlice({
-  name: 'rawTicket',
+  name: 'rawTickets',
   initialState,
   reducers: {
-    [RawTicketValueActions.setError](state: rawTicketsState, action: Action) {
+    // [RawTicketValueActions.setError](state: rawTicketsState, action: Action) {
+    SET_ERROR(state: rawTicketsState, action: Action) {
       state.error = action.payload;
     },
     [RawTicketValueActions.setloading](state: rawTicketsState, action: Action) {

@@ -17,12 +17,16 @@ export default function TicketRow(props: any) {
   }
 
   function stopsToString(stops: number) {
-    switch (stops) {
-      case 0: { return 'без пересадок'; }
-      case 1: { return '1 пересадка'; }
-      case 2: { return '2 пересадки'; }
-      case 3: { return '3 пересадки'; }
-      default: { return `${stops} пересадок`; }
+    if (stops === 0) {
+      return 'без пересадок';
+    } else if (stops === 1) {
+      return '1 пересадка';
+    } else if (stops === 2) {
+      return '2 пересадки';
+    } else if (stops === 3) {
+      return '3 пересадки';
+    } else {
+      return `${stops} пересадок`;
     }
   }
   function dateToString(date: string) {

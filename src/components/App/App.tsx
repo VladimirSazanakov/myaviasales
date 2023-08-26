@@ -35,6 +35,7 @@ function App() {
     if (rawTickets.length > 0) {
       filterArr();
     }
+    console.log(bigState.tickets.Tickets);
   }, [filterState]);
 
   useEffect(() => {
@@ -52,24 +53,40 @@ function App() {
   };
 
   const onChangePagination = (page: number) => {
-    dispatch(ticketsActions.SET_CURRENT_PAGE(page));
+    // console.log(ticketsActions.SET_CURRENT_PAGE(page));
+    let tempPage: any;
+    tempPage = page;
+
+    dispatch(ticketsActions.SET_CURRENT_PAGE(tempPage));
+    // dispatch({ type: 'tickets/SET_CURRENT_PAGE', action: { payload: page } });
+    tempPage = null;
   };
 
   const filterArr = () => {
     const ticketsActions = ticketsSlice.actions;
     let NewArr: Ticket[] = [];
 
-    filterState.peresadki.forEach((on, peresadki) => {
+    filterState.peresadki.forEach((on: boolean, peresadki: number) => {
       if (on) {
         NewArr = NewArr.concat(TicketFilter(rawTickets, peresadki));
       }
     });
-    dispatch(ticketsActions.SET_TIKETS(NewArr));
+
+    let tempNewArr: any;
+    tempNewArr = NewArr;
+    dispatch(ticketsActions.SET_TIKETS(tempNewArr));
+    // dispatch({ type: 'tickets/SET_TIKETS', action: { payload: NewArr } });
+    // dispatch({type: 'tick'})
+    tempNewArr = [];
     sortArr();
   };
 
   const sortArr = () => {
-    dispatch(ticketsActions.SORT_BY_PRICE(tabState.tabCurrentValue));
+    let TtabCurrenValue: any;
+    TtabCurrenValue = tabState.tabCurrentValue;
+    dispatch(ticketsActions.SORT_BY_PRICE(TtabCurrenValue));
+    // dispatch({ type: 'tickets/SORT_BY_PRICE', action: { payload: tabState.tabCurrentValue } });
+    TtabCurrenValue = 0;
   };
 
   return (
@@ -100,7 +117,7 @@ function App() {
         <Pagination
           current={CurentPage}
           onChange={onChangePagination}
-          total={TotalPages}
+          total={TotalPages * 10}
           showSizeChanger={false}
           hideOnSinglePage={true}
         />
