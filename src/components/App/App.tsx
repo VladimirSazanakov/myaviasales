@@ -35,7 +35,7 @@ function App() {
     if (rawTickets.length > 0) {
       filterArr();
     }
-  }, [filterState]);
+  }, [filterState, rawTickets]);
 
   useEffect(() => {
     sortArr();
